@@ -72,7 +72,6 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -89,11 +88,13 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/1secHzgen.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/Digit_Selector.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/bcd7seg.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/bin2bcd.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/btn_ripple.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/hours.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/minutes.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/negedgedetect.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/seconds.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/tff.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_bin_clk.v
