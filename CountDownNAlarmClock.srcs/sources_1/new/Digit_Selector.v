@@ -40,21 +40,36 @@ module Digit_Selector(
     initial state = IDLE;
     initial next_state = IDLE;
     
+    wire open_sig, close_sig;
+    posedge_detect open(clk, mode, open_sig);
+//    negedge_detect close(clk, mode, close_sig);
+    
     always@(posedge clk) begin
-    if (~mode) state <= IDLE;
-    else if (mode) state <= GR;
+    if (open_sig) state <= IDLE;
+//    else if (open_sig) state <= GR;
     else state <= next_state;
     end
-    always@(state,bl,br)begin
+    
+    always@(state,mode,bl,br)begin
         // operate when mode is on
-        if((bl ^ br) && mode)begin
         case(state)
-           IDLE: next_state=GR;
-           GR: next_state=GL;
-           GL: next_state=GR;
+           IDLE: begin
+           if(mode)next_state=GR;
+           else next_state=IDLE;
+           end
+           GR: begin
+           if(~mode) next_state=IDLE;
+           else if (mode && (bl && ~br)) next_state=GL;
+           else next_state=GR;
+           end
+           GL: begin
+           if(~mode) next_state=IDLE;
+           else if(mode && (~bl && br)) next_state=GR;
+           else next_state = GL;
+           end
         endcase
         end
-    end
+    
     always@(state) begin
     case(state)
            IDLE: Selected<=4'b1111;

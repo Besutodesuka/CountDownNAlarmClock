@@ -48,7 +48,7 @@ module bcd7seg(
                 end
                 else
                     anode_timer <=  anode_timer + 1;
-                if(timer == 1000000) begin
+                if(timer == 49_999_999) begin
                     timer <= 0;
                     elapsed_half = ~elapsed_half;
                     end
@@ -77,15 +77,16 @@ module bcd7seg(
                     show_number = d;
                 end
             endcase
-            // 1110 + 1100 = 1010, 1101 + 1100 = 1001, 1011+1100 == 0111 1111+1100 == 1000
-            // check last 2 blink 1110 and 1100, 1101 and 1100
-//            if (((DigitSelected[0] == mirage_vis[0]) && (~mirage_vis[0])) || 
-//            ((DigitSelected[1] == mirage_vis[1]) && ~mirage_vis[1])
-//            ) blink = 1;
-//            else if (((DigitSelected[2] == mirage_vis[2]) && ~mirage_vis[2]) || 
-//            ((DigitSelected[3] == mirage_vis[3]) && ~mirage_vis[3])
-//            ) blink = 1;
-//            else blink = 0;
+//             1110 + 1100 = 1010, 1101 + 1100 = 1001, 1011+1100 == 0111 1111+1100 == 1000
+//             check last 2 blink 1110 and 1100, 1101 and 1100
+            if (((DigitSelected[0] == mirage_vis[0]) && (~mirage_vis[0])) || 
+            ((DigitSelected[1] == mirage_vis[1]) && ~mirage_vis[1])
+            ) blink = 1;
+            // check first two digit
+            else if (((DigitSelected[2] == mirage_vis[2]) && ~mirage_vis[2]) || 
+            ((DigitSelected[3] == mirage_vis[3]) && ~mirage_vis[3])
+            ) blink = 1;
+            else blink = 0;
             if (elapsed_half && blink) an <= 4'b1111;
             else an<=mirage_vis;
         end

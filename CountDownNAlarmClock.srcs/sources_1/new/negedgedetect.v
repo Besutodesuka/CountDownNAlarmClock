@@ -25,7 +25,7 @@ input clk,
 input sig,
 output reg pulse
     );
-    reg sig_prev = 0;
+    reg sig_prev;
     always@(posedge clk) begin
     if (sig == 0 && sig_prev == 1) pulse <= 1;
     else pulse <= 0;

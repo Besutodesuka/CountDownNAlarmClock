@@ -12,10 +12,10 @@ module minutes(
     reg [5:0] min_ctr = 0;
     
     always @(posedge clk) begin
-            if(reset || (min_ctr == 59)) min_ctr <= 0;
+            if(reset || (min_ctr >= 59)) min_ctr <= 0;
             else if((min_ctr >= 0) && dec_minutes) min_ctr <= min_ctr - 1;
             else if ((min_ctr <= 59) && inc_minutes)min_ctr <= min_ctr + 1;
     end
     assign min = min_ctr;
-    assign inc_hours = (min_ctr == 59) ? 1 : 0;
+    assign inc_hours = (min_ctr >= 59) ? 1 : 0;
 endmodule
