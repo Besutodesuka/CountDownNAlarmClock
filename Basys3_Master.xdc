@@ -68,7 +68,7 @@ set_property PACKAGE_PIN E19 [get_ports {led1}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[10]}]
 #set_property PACKAGE_PIN U3 [get_ports {led[11]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[11]}]
-#set_property PACKAGE_PIN P3 [get_ports {led[12]}]
+set_property PACKAGE_PIN P3 [get_ports {led[12]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {led[12]}]
 set_property PACKAGE_PIN N3 [get_ports {led[13]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {led[13]}] # state Stopwatch

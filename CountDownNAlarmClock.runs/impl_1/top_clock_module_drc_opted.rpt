@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Mon Nov 13 00:41:10 2023
+| Date         : Thu Nov 16 00:07:31 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_clock_module_drc_opted.rpt -pb top_clock_module_drc_opted.pb -rpx top_clock_module_drc_opted.rpx
 | Design       : top_clock_module
@@ -24,27 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 2
-+-------------+----------+-------------------------------------------------------------+------------+
-| Rule        | Severity | Description                                                 | Violations |
-+-------------+----------+-------------------------------------------------------------+------------+
-| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 2          |
-+-------------+----------+-------------------------------------------------------------+------------+
+             Violations found: 0
++------+----------+-------------+------------+
+| Rule | Severity | Description | Violations |
++------+----------+-------------+------------+
++------+----------+-------------+------------+
 
 2. REPORT DETAILS
 -----------------
-PLHOLDVIO-2#1 Warning
-Non-Optimal connections which could lead to hold violations  
-A LUT bin/min/hrs_ctr[5]_i_2 is driving clock pin of 6 cells. This could lead to large hold time violations. Involved cells are:
-bin/hr/hrs_ctr_reg[0], bin/hr/hrs_ctr_reg[1], bin/hr/hrs_ctr_reg[2],
-bin/hr/hrs_ctr_reg[3], bin/hr/hrs_ctr_reg[4], bin/hr/hrs_ctr_reg[5]
-Related violations: <none>
-
-PLHOLDVIO-2#2 Warning
-Non-Optimal connections which could lead to hold violations  
-A LUT bin/sec/min_ctr[5]_i_2 is driving clock pin of 6 cells. This could lead to large hold time violations. Involved cells are:
-bin/min/min_ctr_reg[0], bin/min/min_ctr_reg[1], bin/min/min_ctr_reg[2],
-bin/min/min_ctr_reg[3], bin/min/min_ctr_reg[4], bin/min/min_ctr_reg[5]
-Related violations: <none>
-
 

@@ -3,6 +3,7 @@
 module bcd7seg(
     input clk_100MHz,
     input reset,
+    input [3:0] DigitSelected,
     input [3:0] a,
     input [3:0] b,
     input [3:0] c,
@@ -29,40 +30,65 @@ module bcd7seg(
         reg [1:0] anode_select;
         reg [3:0] show_number; 
         reg [16:0] anode_timer;
+        reg [25:0] timer;
+        reg elapsed_half, blink;
         // 100000Hz refresh rate
+        reg [3:0] mirage_vis;
+        initial elapsed_half = 0;
+        initial blink = 0;
         always @(posedge clk_100MHz or posedge reset) begin
             if(reset) begin
                 anode_select <= 0;
                 anode_timer <= 0; 
             end
-            else
+            else begin
                 if(anode_timer == 100000) begin
                     anode_timer <= 0;
                     anode_select <=  anode_select + 1;
                 end
                 else
                     anode_timer <=  anode_timer + 1;
+                if(timer == 49_999_999) begin
+                    timer <= 0;
+                    elapsed_half = ~elapsed_half;
+                    end
+                else timer <=  timer + 1;
+            end
         end
         // speed mirage
+
+        
         always @(anode_select) begin
             case(anode_select) 
                 2'b00 : begin
-                     an = 4'b0111;
+                     mirage_vis <= 4'b0111;
                      show_number = a;
                  end
                 2'b01 : begin
-                     an = 4'b1011;
+                     mirage_vis = 4'b1011;
                      show_number = b;
                  end
                 2'b10 : begin
-                    an = 4'b1101;
+                    mirage_vis = 4'b1101;
                     show_number = c;
                 end
                 2'b11 : begin
-                    an = 4'b1110;
+                    mirage_vis = 4'b1110;
                     show_number = d;
                 end
             endcase
+//             1110 + 1100 = 1010, 1101 + 1100 = 1001, 1011+1100 == 0111 1111+1100 == 1000
+//             check last 2 blink 1110 and 1100, 1101 and 1100
+            if (((DigitSelected[0] == mirage_vis[0]) && (~mirage_vis[0])) || 
+            ((DigitSelected[1] == mirage_vis[1]) && ~mirage_vis[1])
+            ) blink = 1;
+            // check first two digit
+            else if (((DigitSelected[2] == mirage_vis[2]) && ~mirage_vis[2]) || 
+            ((DigitSelected[3] == mirage_vis[3]) && ~mirage_vis[3])
+            ) blink = 1;
+            else blink = 0;
+            if (elapsed_half && blink) an <= 4'b1111;
+            else an<=mirage_vis;
         end
     
     // To drive the segments

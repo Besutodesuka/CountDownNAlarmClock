@@ -22,6 +22,8 @@
 module top_clock_module(
     input clk_100MHz,
     input reset, //reset
+    input btnL, //inc_hours
+    input btnR,
     input btnC,  //mode setter
     input btnU, //inc_hours
     input btnD, //inc_mins
@@ -34,10 +36,10 @@ module top_clock_module(
     wire [5:0] v_minutes;
     wire [3:0] hrs_tens, mins_tens;
     wire [3:0] hrs_ones, mins_ones;
-    
+    wire [3:0] selected;
     // Binary Clock
-    top_bin_clock bin(clk_100MHz, reset, btnC, btnD, btnU,
-                       v_hours, led0, v_minutes, led1);
+    top_bin_clock bin(clk_100MHz, reset, btnC, btnD, btnU, btnL, btnR,
+                       v_hours, led0, v_minutes, led1, selected);
     
 //    assign hours_pad = {2'b00, v_hours};     // Pad hours vector with zeros to size for bin2bcd ('00'+'0100')
     // encode 10 base value from Binary clock
@@ -45,7 +47,7 @@ module top_clock_module(
     bin2bcd mins(v_minutes, mins_tens, mins_ones);
     
     // set 7 seg [hrs_tens, hrs_ones, mins_tens, mins_ones]
-    bcd7seg seg7(clk_100MHz, reset, hrs_tens, hrs_ones, mins_tens, 
+    bcd7seg seg7(clk_100MHz, reset, selected, hrs_tens, hrs_ones, mins_tens, 
                       mins_ones, seg, AN);
 //    assign test = blink;
 endmodule
