@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Thu Nov 16 00:07:36 2023
+| Date         : Thu Nov 16 12:05:20 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_clock_module_control_sets_placed.rpt
 | Design       : top_clock_module
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              34 |           11 |
-| No           | No                    | Yes                    |              25 |            7 |
-| No           | Yes                   | No                     |              26 |            7 |
+| No           | No                    | No                     |              34 |           13 |
+| No           | No                    | Yes                    |              25 |            6 |
+| No           | Yes                   | No                     |              26 |            8 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              37 |           12 |
+| Yes          | Yes                   | No                     |              37 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,14 +73,14 @@ Table of Contents
 +----------------------------------------+----------------------------+------------------------------+------------------+----------------+--------------+
 |              Clock Signal              |        Enable Signal       |       Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------------------+----------------------------+------------------------------+------------------+----------------+--------------+
-|  bin/editdigit/Selected_reg[3]_i_2_n_0 |                            |                              |                1 |              4 |         4.00 |
-|  bin/seconds_gear/led0_OBUF            |                            | bin/bReset/AR[0]             |                2 |              6 |         3.00 |
-|  clk_100MHz_IBUF_BUFG                  | bin/min/E[0]               | bin/hr/hrs_ctr[5]_i_1_n_0    |                3 |              6 |         2.00 |
+|  bin/editdigit/Selected_reg[3]_i_2_n_0 |                            |                              |                2 |              4 |         2.00 |
+|  clk_100MHz_IBUF_BUFG                  | bin/min/E[0]               | bin/hr/hrs_ctr[5]_i_1_n_0    |                4 |              6 |         1.50 |
 |  clk_100MHz_IBUF_BUFG                  | bin/min/min_ctr[5]_i_2_n_0 | bin/bReset/SR[0]             |                2 |              6 |         3.00 |
-|  clk_100MHz_IBUF_BUFG                  |                            | reset_IBUF                   |                5 |             19 |         3.80 |
+|  bin/seconds_gear/led0_OBUF            |                            | bin/bReset/AR[0]             |                2 |              6 |         3.00 |
+|  clk_100MHz_IBUF_BUFG                  |                            | reset_IBUF                   |                4 |             19 |         4.75 |
 |  clk_100MHz_IBUF_BUFG                  | seg7/timer[25]_i_2_n_0     | seg7/elapsed_half1_out       |                7 |             25 |         3.57 |
-|  clk_100MHz_IBUF_BUFG                  |                            | bin/seconds_gear/clk_out_reg |                7 |             26 |         3.71 |
-|  clk_100MHz_IBUF_BUFG                  |                            |                              |               10 |             31 |         3.10 |
+|  clk_100MHz_IBUF_BUFG                  |                            | bin/seconds_gear/clk_out_reg |                8 |             26 |         3.25 |
+|  clk_100MHz_IBUF_BUFG                  |                            |                              |               11 |             31 |         2.82 |
 +----------------------------------------+----------------------------+------------------------------+------------------+----------------+--------------+
 
 

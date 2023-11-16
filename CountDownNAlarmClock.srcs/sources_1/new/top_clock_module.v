@@ -27,12 +27,14 @@ module top_clock_module(
     input btnC,  //mode setter
     input btnU, //inc_hours
     input btnD, //inc_mins
+    input [11:0] sw,
+    input timeSw,
     output led0,led1,
     output [0:6] seg,
     output [3:0] AN
     );
     
-    wire [5:0] v_hours;
+    wire [5:0] v_hours, v_hours_tz;
     wire [5:0] v_minutes;
     wire [3:0] hrs_tens, mins_tens;
     wire [3:0] hrs_ones, mins_ones;
@@ -40,10 +42,13 @@ module top_clock_module(
     // Binary Clock
     top_bin_clock bin(clk_100MHz, reset, btnC, btnD, btnU, btnL, btnR,
                        v_hours, led0, v_minutes, led1, selected);
-    
-//    assign hours_pad = {2'b00, v_hours};     // Pad hours vector with zeros to size for bin2bcd ('00'+'0100')
+    // add time zone selector here 
+    // input :v_hours, sw list
+    // output:v_hours
+    timezone_selector tz(v_hours, sw, timeSw, v_hours_tz);
+    // assign hours_pad = {2'b00, v_hours};     // Pad hours vector with zeros to size for bin2bcd ('00'+'0100')
     // encode 10 base value from Binary clock
-    bin2bcd hrs(v_hours, hrs_tens, hrs_ones);
+    bin2bcd hrs(v_hours_tz, hrs_tens, hrs_ones);
     bin2bcd mins(v_minutes, mins_tens, mins_ones);
     
     // set 7 seg [hrs_tens, hrs_ones, mins_tens, mins_ones]

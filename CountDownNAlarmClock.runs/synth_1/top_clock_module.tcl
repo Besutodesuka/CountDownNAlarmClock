@@ -72,7 +72,6 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -99,6 +98,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/posedge_detect.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/seconds.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/tff.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/timezone_selector.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_bin_clk.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_clock_module.v
 }
