@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Thu Nov 16 12:01:43 2023
-# Process ID: 24976
+# Start of session at: Sat Nov 18 21:55:42 2023
+# Process ID: 20924
 # Current directory: C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.runs/synth_1
-# Command line: vivado.exe -log top_clock_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_clock_module.tcl
-# Log file: C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.runs/synth_1/top_clock_module.vds
+# Command line: vivado.exe -log top_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
+# Log file: C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.runs/synth_1/top_module.vds
 # Journal file: C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.runs/synth_1\vivado.jou
 # Running On: ROG, OS: Windows, CPU Frequency: 2895 MHz, CPU Physical cores: 16, Host memory: 33738 MB
 #-----------------------------------------------------------
-source top_clock_module.tcl -notrace
+source top_module.tcl -notrace

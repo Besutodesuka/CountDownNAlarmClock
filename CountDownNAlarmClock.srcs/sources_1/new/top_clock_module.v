@@ -29,19 +29,16 @@ module top_clock_module(
     input btnD, //inc_mins
     input [11:0] sw,
     input timeSw,
-    output led0,led1,
-    output [0:6] seg,
-    output [3:0] AN
+    input mode,
+    output led0,led1
+//    ,output [6:0] seg, output [3:0] AN
+    ,output [3:0] selected, hrs_tens, hrs_ones, mins_tens, mins_ones
     );
-    
-    wire [5:0] v_hours, v_hours_tz;
-    wire [5:0] v_minutes;
-    wire [3:0] hrs_tens, mins_tens;
-    wire [3:0] hrs_ones, mins_ones;
-    wire [3:0] selected;
+    wire [5:0] v_minutes, v_hours, v_hours_tz;
+//    wire [3:0] selected;
     // Binary Clock
-    top_bin_clock bin(clk_100MHz, reset, btnC, btnD, btnU, btnL, btnR,
-                       v_hours, led0, v_minutes, led1, selected);
+    top_bin_clock bin(clk_100MHz, reset, btnC, btnD, btnU, btnL, btnR, mode,
+                       v_hours, led0, v_minutes, led1, selected); // check v hour
     // add time zone selector here 
     // input :v_hours, sw list
     // output:v_hours
@@ -51,8 +48,8 @@ module top_clock_module(
     bin2bcd hrs(v_hours_tz, hrs_tens, hrs_ones);
     bin2bcd mins(v_minutes, mins_tens, mins_ones);
     
-    // set 7 seg [hrs_tens, hrs_ones, mins_tens, mins_ones]
-    bcd7seg seg7(clk_100MHz, reset, selected, hrs_tens, hrs_ones, mins_tens, 
-                      mins_ones, seg, AN);
+//    // set 7 seg [hrs_tens, hrs_ones, mins_tens, mins_ones]
+//    bcd7seg seg7(clk_100MHz, reset, selected, hrs_tens, hrs_ones, mins_tens, 
+//                      mins_ones, seg, AN);
 //    assign test = blink;
 endmodule
