@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sat Nov 18 22:28:25 2023
+| Date         : Thu Nov 23 23:22:36 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_module_methodology_drc_routed.rpt -pb top_module_methodology_drc_routed.pb -rpx top_module_methodology_drc_routed.rpx
 | Design       : top_module
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 46
+             Violations found: 54
 +-----------+------------------+--------------------------------+------------+
 | Rule      | Severity         | Description                    | Violations |
 +-----------+------------------+--------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 6          |
-| TIMING-18 | Warning          | Missing input or output delay  | 28         |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 12         |
+| TIMING-18 | Warning          | Missing input or output delay  | 30         |
 | TIMING-20 | Warning          | Non-clocked latch              | 11         |
 | LATCH-1   | Advisory         | Existing latches in the design | 1          |
 +-----------+------------------+--------------------------------+------------+
@@ -63,6 +63,36 @@ Related violations: <none>
 TIMING-17#6 Critical Warning
 Non-clocked sequential cell  
 The clock pin CLOCK_Mode/bin/sec/sec_ctr_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Critical Warning
+Non-clocked sequential cell  
+The clock pin STOP_Mode/sec/sec_ctr_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -197,10 +227,20 @@ Related violations: <none>
 
 TIMING-18#27 Warning
 Missing input or output delay  
-An output delay is missing on sysmode[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led_hhmmss relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#28 Warning
+Missing input or output delay  
+An output delay is missing on led_pause relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#29 Warning
+Missing input or output delay  
+An output delay is missing on sysmode[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+Related violations: <none>
+
+TIMING-18#30 Warning
 Missing input or output delay  
 An output delay is missing on sysmode[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>

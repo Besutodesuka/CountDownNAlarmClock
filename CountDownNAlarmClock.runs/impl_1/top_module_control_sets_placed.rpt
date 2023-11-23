@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sat Nov 18 22:27:49 2023
+| Date         : Thu Nov 23 23:22:08 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_module_control_sets_placed.rpt
 | Design       : top_module
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    10 |
-|    Minimum number of control sets                        |    10 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    31 |
+| Unused register locations in slices containing registers |    35 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,10 +39,10 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    10 |
+| Total control sets |    12 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     5 |
+| >= 6 to < 8        |     7 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
@@ -58,31 +58,33 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              58 |           19 |
-| No           | No                    | Yes                    |              25 |            6 |
-| No           | Yes                   | No                     |              33 |           11 |
+| No           | No                    | No                     |              83 |           31 |
+| No           | No                    | Yes                    |              25 |            8 |
+| No           | Yes                   | No                     |              26 |            8 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              37 |           11 |
+| Yes          | No                    | Yes                    |               6 |            2 |
+| Yes          | Yes                   | No                     |              49 |           14 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------------------------------+-------------------------------------+-----------------------------------------+------------------+----------------+--------------+
-|                    Clock Signal                   |            Enable Signal            |             Set/Reset Signal            | Slice Load Count | Bel Load Count | Bels / Slice |
-+---------------------------------------------------+-------------------------------------+-----------------------------------------+------------------+----------------+--------------+
-|  CLOCK_Mode/bin/editdigit/Selected_reg[3]_i_2_n_0 |                                     |                                         |                1 |              4 |         4.00 |
-|  CLOCK_Mode/bin/seconds_gear/CLK                  |                                     | bReset/reset_db                         |                2 |              6 |         3.00 |
-|  clk_100MHz_IBUF_BUFG                             | CLOCK_Mode/bin/neg_D/E[0]           | bReset/SR[0]                            |                2 |              6 |         3.00 |
-|  clk_100MHz_IBUF_BUFG                             | CLOCK_Mode/bin/neg_D/pulse_reg_0[0] | CLOCK_Mode/bin/hr/hrs_ctr[5]_i_1_n_0    |                2 |              6 |         3.00 |
-|  clk_100MHz_IBUF_BUFG                             |                                     | sys_mode/FSM_sequential_state_reg[1]_0  |                3 |              7 |         2.33 |
-|  seg7/seg_reg[0]_i_2_n_0                          |                                     |                                         |                3 |              7 |         2.33 |
-|  clk_100MHz_IBUF_BUFG                             |                                     | reset_IBUF                              |                4 |             19 |         4.75 |
-|  clk_100MHz_IBUF_BUFG                             | seg7/timer[25]_i_2_n_0              | seg7/elapsed_half1_out                  |                7 |             25 |         3.57 |
-|  clk_100MHz_IBUF_BUFG                             |                                     | CLOCK_Mode/bin/seconds_gear/clk_out_reg |                8 |             26 |         3.25 |
-|  clk_100MHz_IBUF_BUFG                             |                                     |                                         |               15 |             48 |         3.20 |
-+---------------------------------------------------+-------------------------------------+-----------------------------------------+------------------+----------------+--------------+
++---------------------------------------------------+---------------------------------------+-----------------------------------------+------------------+----------------+--------------+
+|                    Clock Signal                   |             Enable Signal             |             Set/Reset Signal            | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------------------------+---------------------------------------+-----------------------------------------+------------------+----------------+--------------+
+|  CLOCK_Mode/bin/editdigit/Selected_reg[3]_i_2_n_0 |                                       |                                         |                1 |              4 |         4.00 |
+|  CLOCK_Mode/bin/seconds_gear/clk_out_reg_reg_0    |                                       | bReset/reset_db                         |                2 |              6 |         3.00 |
+|  CLOCK_Mode/bin/seconds_gear/clk_out_reg_reg_0    | modetog_sto/E[0]                      | bReset/reset_db                         |                2 |              6 |         3.00 |
+|  clk_100MHz_IBUF_BUFG                             | CLOCK_Mode/bin/min/min_ctr[5]_i_2_n_0 | bReset/SR[0]                            |                2 |              6 |         3.00 |
+|  clk_100MHz_IBUF_BUFG                             | CLOCK_Mode/bin/min/E[0]               | CLOCK_Mode/bin/hr/hrs_ctr[5]_i_1_n_0    |                2 |              6 |         3.00 |
+|  clk_100MHz_IBUF_BUFG                             | STOP_Mode/hr/hrs_ctr[5]_i_2__0_n_0    | STOP_Mode/hr/hrs_ctr[5]_i_1__0_n_0      |                1 |              6 |         6.00 |
+|  clk_100MHz_IBUF_BUFG                             | STOP_Mode/min/min_ctr[5]_i_2__0_n_0   | STOP_Mode/min/min_ctr[5]_i_1__0_n_0     |                2 |              6 |         3.00 |
+|  seg7/seg_reg[0]_i_2_n_0                          |                                       |                                         |                3 |              7 |         2.33 |
+|  clk_100MHz_IBUF_BUFG                             |                                       | reset_IBUF                              |                6 |             19 |         3.17 |
+|  clk_100MHz_IBUF_BUFG                             | seg7/timer[25]_i_2_n_0                | seg7/elapsed_half1_out                  |                7 |             25 |         3.57 |
+|  clk_100MHz_IBUF_BUFG                             |                                       | CLOCK_Mode/bin/seconds_gear/clk_out_reg |                8 |             26 |         3.25 |
+|  clk_100MHz_IBUF_BUFG                             |                                       |                                         |               27 |             73 |         2.70 |
++---------------------------------------------------+---------------------------------------+-----------------------------------------+------------------+----------------+--------------+
 
 

@@ -30,7 +30,7 @@ module top_clock_module(
     input [11:0] sw,
     input timeSw,
     input mode,
-    output led0,led1
+    output led0,led1 // led0 => sig 1 hz
 //    ,output [6:0] seg, output [3:0] AN
     ,output [3:0] selected, hrs_tens, hrs_ones, mins_tens, mins_ones
     );
@@ -51,5 +51,4 @@ module top_clock_module(
 //    // set 7 seg [hrs_tens, hrs_ones, mins_tens, mins_ones]
 //    bcd7seg seg7(clk_100MHz, reset, selected, hrs_tens, hrs_ones, mins_tens, 
 //                      mins_ones, seg, AN);
-//    assign test = blink;
 endmodule

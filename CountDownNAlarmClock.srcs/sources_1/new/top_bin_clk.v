@@ -29,7 +29,7 @@
     
     // this signal will continuously increasing by one second
     // module minute increment wierdly
-    seconds sec(w_1Hz, reset_db, w_inc_mins);
+    seconds sec(w_1Hz, reset_db, 2'b01, w_inc_mins);
     minutes min(clk_100MHz, inc_mins_or, dec_mins, reset_db, w_inc_hrs, minutes_out);
     hours hr(clk_100MHz, inc_hrs_or, dec_hrs, reset_db, hours_out);
     

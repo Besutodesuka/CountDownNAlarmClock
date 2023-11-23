@@ -23,12 +23,16 @@
 module tff(
 input clk_100MHz,
 input t,
-input mode,
-input mode_target,
+input reset,
+input activate,
 output reg q
 );
-always @ (posedge clk_100MHz) begin    
-    if (t && (mode == mode_target))q <= ~q;  
-    else q <= q;  
+initial q = 0;
+always @ (posedge clk_100MHz) begin
+    if(activate) begin
+        if(reset) q = 0;
+        else q <= (t) ? ~q : q;  
+//    else q <= q;  
+        end
     end 
 endmodule

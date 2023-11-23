@@ -68,14 +68,16 @@ set_property PACKAGE_PIN V19 [get_ports {sysmode[1]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[10]}]
 #set_property PACKAGE_PIN U3 [get_ports {led[11]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[11]}]
-set_property PACKAGE_PIN P3 [get_ports {led[12]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {led[12]}]
-set_property PACKAGE_PIN N3 [get_ports {led[13]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {led[13]}] # state Stopwatch
-set_property PACKAGE_PIN P1 [get_ports {led[14]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {led[14]}] # state set Alarm menu
-set_property PACKAGE_PIN L1 [get_ports {led[15]}]
-	set_property IOSTANDARD LVCMOS33 [get_ports {led[15]}] # state clock menu
+#set_property PACKAGE_PIN P3 [get_ports {led[12]}]
+#	set_property IOSTANDARD LVCMOS33 [get_ports {led[12]}]
+#set_property PACKAGE_PIN N3 [get_ports {led[13]}]
+#	set_property IOSTANDARD LVCMOS33 [get_ports {led[13]}] # state Stopwatch
+set_property PACKAGE_PIN P1 [get_ports {led_pause}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {led_pause}] 
+	## state set Alarm menu
+set_property PACKAGE_PIN L1 [get_ports {led_hhmmss}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {led_hhmmss}]
+	## state mode HH:MM : 1, MM:SS : 0
 
 
 ##7 segment display
