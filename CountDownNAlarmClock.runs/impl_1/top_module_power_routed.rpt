@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Thu Nov 23 23:22:37 2023
+| Date             : Fri Nov 24 11:00:50 2023
 | Host             : ROG running 64-bit major release  (build 9200)
 | Command          : report_power -file top_module_power_routed.rpt -pb top_module_power_summary_routed.pb -rpx top_module_power_routed.rpx
 | Design           : top_module
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.081        |
+| Total On-Chip Power (W)  | 0.080        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.009        |
+| Dynamic (W)              | 0.008        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -54,16 +54,16 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.001 |        3 |       --- |             --- |
 | Slice Logic             |    <0.001 |      481 |       --- |             --- |
-|   LUT as Logic          |    <0.001 |      163 |     20800 |            0.78 |
+|   LUT as Logic          |    <0.001 |      165 |     20800 |            0.79 |
 |   Register              |    <0.001 |      189 |     41600 |            0.45 |
 |   CARRY4                |    <0.001 |       18 |      8150 |            0.22 |
+|   F7/F8 Muxes           |    <0.001 |        3 |     32600 |           <0.01 |
 |   LUT as Shift Register |    <0.001 |        1 |      9600 |            0.01 |
-|   F7/F8 Muxes           |    <0.001 |        1 |     32600 |           <0.01 |
-|   Others                |     0.000 |       49 |       --- |             --- |
-| Signals                 |    <0.001 |      362 |       --- |             --- |
-| I/O                     |     0.007 |       38 |       106 |           35.85 |
+|   Others                |     0.000 |       50 |       --- |             --- |
+| Signals                 |    <0.001 |      359 |       --- |             --- |
+| I/O                     |     0.005 |       38 |       106 |           35.85 |
 | Static Power            |     0.072 |          |           |                 |
-| Total                   |     0.081 |          |           |                 |
+| Total                   |     0.080 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.012 |       0.003 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.013 |       0.003 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -142,7 +142,7 @@ Table of Contents
 +------------+-----------+
 | Name       | Power (W) |
 +------------+-----------+
-| top_module |     0.009 |
+| top_module |     0.008 |
 +------------+-----------+
 
 

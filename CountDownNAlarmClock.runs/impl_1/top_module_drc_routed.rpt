@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Thu Nov 23 23:22:35 2023
+| Date         : Fri Nov 24 11:00:49 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_module_drc_routed.rpt -pb top_module_drc_routed.pb -rpx top_module_drc_routed.rpx
 | Design       : top_module
@@ -35,7 +35,7 @@ Table of Contents
 -----------------
 PDRC-153#1 Warning
 Gated clock check  
-Net CLOCK_Mode/bin/editdigit/Selected_reg[3]_i_2_n_0 is a gated clock net sourced by a combinational pin CLOCK_Mode/bin/editdigit/Selected_reg[3]_i_2/O, cell CLOCK_Mode/bin/editdigit/Selected_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net editdigit/Selected_reg[3]_i_2_n_0 is a gated clock net sourced by a combinational pin editdigit/Selected_reg[3]_i_2/O, cell editdigit/Selected_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning

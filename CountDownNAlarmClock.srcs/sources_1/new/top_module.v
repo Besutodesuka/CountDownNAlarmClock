@@ -46,6 +46,7 @@ module top_module(
     wire [3:0] a_count,b_count,c_count,d_count,selected_count;
     
     reg [3:0] vis_selected;
+    wire [3:0] selectdigit;
      
     wire dcl_db,dcr_db, l_neg, r_neg;
     wire stop_mode_pause, clock_mode;
@@ -66,17 +67,9 @@ module top_module(
 //    negedge_detect neg_C(clk_100MHz, setting_db, c_neg);
     // mode selector
     mode_selector sys_mode(
-    clk_100MHz, swV16, reset_db, l_neg, r_neg,
+    clk_100MHz, swV16, l_neg, r_neg,
     mode_selected
     );
-    // btn c mode   
-//    negedge_detect neg_sig_pause(clk_100MHz, setting_db && (mode_selected == STOPWATCH), ttfsig_pause);
-//    negedge_detect neg_sig_clk(clk_100MHz, setting_db && (mode_selected == CLOCK), ttfsig_clk);
-    
-//    always @ (posedge clk_100MHz) begin
-//    if (setting_db && (mode_selected == STOPWATCH)) clock_mode<=~clock_mode;
-//    else if(setting_db && (mode_selected == CLOCK)) stop_mode_pause <=~stop_mode_pause;
-//    end
 // some how c button not working
     tff modetog_clk(clk_100MHz, setting_db ,reset_db,(mode_selected == CLOCK),clock_mode);
     // pause and continue
@@ -86,10 +79,11 @@ module top_module(
     // change digit MM:SS -> HH:MM
     tff modetog_sto_res(clk_100MHz, inc_db ,reset_db, (mode_selected == STOPWATCH),stop_mode_digit);
     
+    Digit_Selector editdigit(clk_100MHz,clock_mode && reset_mode,l_neg,r_neg,selectdigit);
     // structire top module of each feature
     top_clock_module CLOCK_Mode(clk_100MHz, 
-    reset_db,  dcl_db, dcr_db, setting_db, inc_db, dec_db,
-    sw, timeSw, clock_mode && reset_mode, led0, led1, selected_clock,
+    setting_db, inc_db, dec_db,
+    sw, timeSw, clock_mode && reset_mode, selectdigit , led0, led1,// selected_clock,
      a_clock,b_clock,c_clock,d_clock);
      
     top_stopwatch_module STOP_Mode(clk_100MHz,led0, stop_mode_pause, reset_db,
@@ -103,7 +97,7 @@ module top_module(
     else reset_mode = 1;
     case(mode_selected)
     2'b00: begin // normal clock
-        vis_selected<=selected_clock;
+        vis_selected<=selectdigit;//select_clock
         hrs_tens <= a_clock;
         hrs_ones <= b_clock;
         mins_tens <= c_clock;
@@ -117,7 +111,7 @@ module top_module(
         mins_ones <= 4'b1001;
     end
     2'b10: begin // stop watch
-        vis_selected<=selected_clock;
+        vis_selected<=selectdigit;
         hrs_tens <= a_stop;
         hrs_ones <= b_stop;
         mins_tens <= c_stop;

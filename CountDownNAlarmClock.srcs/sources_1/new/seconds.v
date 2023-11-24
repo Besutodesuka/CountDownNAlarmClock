@@ -25,6 +25,7 @@ module seconds(
     input reset,
     input [1:0] increase, // 0 => dec, 1 => inc
     output inc_minutes,
+//    output dec_minutes,
     output reg [5:0] sec_ctr  // To minutes
     );
     

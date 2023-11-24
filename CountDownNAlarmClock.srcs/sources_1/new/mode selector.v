@@ -27,7 +27,6 @@
 module mode_selector(
     input clk_main,
     input mode, // sw V16
-    input reset,
     input bl, br,
     output reg [1:0] selected
     );
@@ -38,8 +37,9 @@ module mode_selector(
     initial next_state = CLOCK;
     
     always@(posedge clk_main) begin
-    if (reset) state <= CLOCK;
-    else state <= next_state;
+//    if (reset) state <= CLOCK;
+//    else 
+    state <= next_state;
     end
     
     always@(state,mode,bl,br)begin
