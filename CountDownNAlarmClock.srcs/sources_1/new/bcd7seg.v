@@ -82,9 +82,14 @@ module bcd7seg(
             if (((DigitSelected[0] == mirage_vis[0]) && (~mirage_vis[0])) || 
             ((DigitSelected[1] == mirage_vis[1]) && ~mirage_vis[1])
             ) blink = 1;
-            // check first two digit
+            // check first two digit 0011
             else if (((DigitSelected[2] == mirage_vis[2]) && ~mirage_vis[2]) || 
             ((DigitSelected[3] == mirage_vis[3]) && ~mirage_vis[3])
+            ) blink = 1;
+            else if (((DigitSelected[2] == mirage_vis[2]) && ~mirage_vis[2]) || 
+            ((DigitSelected[3] == mirage_vis[3]) && ~mirage_vis[3]) || 
+            ((DigitSelected[0] == mirage_vis[0]) && (~mirage_vis[0])) || 
+            ((DigitSelected[1] == mirage_vis[1]) && ~mirage_vis[1])
             ) blink = 1;
             else blink = 0;
             if (elapsed_half && blink) an <= 4'b1111;

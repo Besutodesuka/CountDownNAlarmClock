@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1700067930" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_clock_module.dcp">
-  <File Type="PA-TCL" Name="top_clock_module.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_clock_module_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="top_clock_module_reports.tcl"/>
-  <File Type="RDS-RDS" Name="top_clock_module.vds"/>
-  <File Type="RDS-UTIL" Name="top_clock_module_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="top_clock_module_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="top_clock_module.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_clock_module_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="top_clock_module_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1701002640" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_clock_module.dcp">
+  <File Type="PA-TCL" Name="top_module.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="top_module_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="top_module_reports.tcl"/>
+  <File Type="RDS-RDS" Name="top_module.vds"/>
+  <File Type="RDS-UTIL" Name="top_module_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="top_module_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="top_module.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="top_module_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="top_module_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/1secHzgen.v">
@@ -53,7 +53,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/minute_CD.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/minutes.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mode selector.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -74,6 +88,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/second_CD.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/seconds.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -82,6 +103,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/tff.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/timezone_selector.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -102,7 +130,36 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/top_countdown_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/top_stopwatch_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/top_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/jkff.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/countdown_state_machine.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -112,7 +169,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="top_clock_module"/>
+      <Option Name="TopModule" Val="top_module"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>

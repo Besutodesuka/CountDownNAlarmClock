@@ -54,18 +54,18 @@ module Digit_Selector(
         // operate when mode is on
         case(state)
            IDLE: begin
-           if(mode)next_state=GR;
-           else next_state=IDLE;
+               next_state= (mode) ? GR : IDLE;
+//               else next_state=IDLE;
            end
            GR: begin
-           if(~mode) next_state=IDLE;
-           else if (mode && (bl && ~br)) next_state=GL;
-           else next_state=GR;
+               if(~mode) next_state=IDLE;
+               else if (mode && (bl && ~br)) next_state=GL;
+               else next_state=GR;
            end
            GL: begin
-           if(~mode) next_state=IDLE;
-           else if(mode && (~bl && br)) next_state=GR;
-           else next_state = GL;
+               if(~mode) next_state=IDLE;
+               else if(mode && (~bl && br)) next_state=GR;
+               else next_state = GL;
            end
         endcase
         end
