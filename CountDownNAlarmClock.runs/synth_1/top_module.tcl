@@ -93,15 +93,18 @@ read_verilog -library xil_defaultlib {
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/bin2bcd.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/btn_ripple.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/hours.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/minute_CD.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/minutes.v
   {C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/mode selector.v}
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/negedgedetect.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/posedge_detect.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/second_CD.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/seconds.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/tff.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/timezone_selector.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_bin_clk.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_clock_module.v
+  C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_countdown_module.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_stopwatch_module.v
   C:/Users/bestk/Desktop/KMUTT/CPE222/CountDownNAlarmClock/CountDownNAlarmClock.srcs/sources_1/new/top_module.v
 }

@@ -21,8 +21,8 @@
 
 module top_clock_module(
     input clk_100MHz,
-    input btnL, //inc_hours
-    input btnR,
+//    input btnL, //inc_hours
+//    input btnR,
     input btnC,  //mode setter
     input btnU, //inc_hours
     input btnD, //inc_mins
@@ -37,7 +37,7 @@ module top_clock_module(
     wire [5:0] v_minutes, v_hours, v_hours_tz;
 //    wire [3:0] selected;
     // Binary Clock
-    top_bin_clock bin(clk_100MHz, btnC, btnD, btnU, btnL, btnR, mode,selected,
+    top_bin_clock bin(clk_100MHz, btnC, btnD, btnU, mode,selected,
                        v_hours, led0, v_minutes, led1); // check v hour
     // add time zone selector here 
     // input :v_hours, sw list

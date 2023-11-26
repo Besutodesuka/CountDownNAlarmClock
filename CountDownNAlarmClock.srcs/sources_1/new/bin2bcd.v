@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // transfer 10base to 2 base
 module bin2bcd(
-    input [5:0] bin_in,
+    input [6:0] bin_in,
     output reg [3:0] tens,      // max value 1001 (0-9)
     output reg [3:0] ones       // max value 1001 (0-9)
     );

@@ -7,8 +7,8 @@
     input setting_db,          // btnC Basys 3
     input dec_db,         // btnD Basys 3
     input inc_db,          // btnU Basys 3
-    input dcl_db,         // btnL Basys 3
-    input dcr_db,          // btnR Basys 3
+//    input dcl_db,         // btnL Basys 3
+//    input dcr_db,          // btnR Basys 3
     input mode,
     input [3:0] selectdigit,
     output [5:0] hours_out,     // Internal
@@ -29,8 +29,24 @@
     
     // this signal will continuously increasing by one second
     // module minute increment wierdly
-    seconds sec(w_1Hz, 0, 2'b01, w_inc_mins,sec_ctr);
-    minutes min(clk_100MHz, inc_mins_or, dec_mins, 0, w_inc_hrs, minutes_out);
+    seconds sec(
+    .clk_1Hz(w_1Hz),
+    .reset(0),
+    // 00 = minus, 10 = hold
+    // 01 = plus
+    .increase(2'b01), 
+    .inc_minutes(w_inc_mins),
+    .sec_ctr(sec_ctr)
+    );
+
+     minutes min(
+    .clk(clk_100MHz),
+     .inc_minutes(inc_mins_or),
+     .dec_minutes(dec_mins), 
+     .reset(0),
+     .inc_hours(w_inc_hrs),
+    .min(minutes_out));
+
     hours hr(clk_100MHz, inc_hrs_or, dec_hrs, 0, hours_out);
     
     negedge_detect neg_U(clk_100MHz, inc_db, insig);

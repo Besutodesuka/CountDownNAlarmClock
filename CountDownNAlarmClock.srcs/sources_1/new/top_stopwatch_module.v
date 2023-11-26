@@ -54,7 +54,14 @@ module top_stopwatch_module(
        .inc_minutes(w_inc_mins),
        .sec_ctr(v_seconds)
     );
-    minutes min(clk_100MHz, inc_mins_or, 0 , reset_db, w_inc_hrs, v_minutes);
+
+     minutes min(
+    .clk(clk_100MHz),
+     .inc_minutes(inc_mins_or),
+     .reset(reset_db),
+     .inc_hours(w_inc_hrs),
+    .min(v_minutes));
+
     hours hr(clk_100MHz, inc_hrs_or, 0 , reset_db, v_hours);
     
     posedge_detect pos_sec_count(clk_100MHz, w_inc_mins, w_inc_mins_1HZ);

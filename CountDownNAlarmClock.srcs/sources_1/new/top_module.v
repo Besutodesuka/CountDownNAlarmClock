@@ -49,11 +49,11 @@ module top_module(
     wire [3:0] selectdigit;
      
     wire dcl_db,dcr_db, l_neg, r_neg;
-    wire stop_mode_pause, clock_mode;
-    wire stop_mode_digit;
+    wire stop_mode_pause, clock_mode, count_mode, count_sig;
+    wire stop_mode_digit, countdown_alarm;
     reg reset_mode;
-    wire [1:0] mode_selected;
-    
+    wire [1:0] mode_selected, count_state;
+    wire led1_clk, led1_count;
     //top input
     btn_ripple bL(clk_100MHz, btnL, dcl_db);
     btn_ripple bR(clk_100MHz, btnR, dcr_db);
@@ -75,21 +75,39 @@ module top_module(
     // pause and continue
     // problem cant use ttf at the same time 
     tff modetog_sto(clk_100MHz, setting_db ,reset_db, (mode_selected == STOPWATCH), stop_mode_pause);
+    
+//    tff modetog_count(clk_100MHz, setting_db ,reset_db, (mode_selected == COUNTDOWN), count_mode);
 
     // change digit MM:SS -> HH:MM
     tff modetog_sto_res(clk_100MHz, inc_db ,reset_db, (mode_selected == STOPWATCH),stop_mode_digit);
     
-    Digit_Selector editdigit(clk_100MHz,clock_mode && reset_mode,l_neg,r_neg,selectdigit);
+    Digit_Selector editdigit(clk_100MHz,
+    (clock_mode|count_state == 2'b10) && reset_mode,
+    l_neg,r_neg,selectdigit);
     // structire top module of each feature
     top_clock_module CLOCK_Mode(clk_100MHz, 
     setting_db, inc_db, dec_db,
-    sw, timeSw, clock_mode && reset_mode, selectdigit , led0, led1,// selected_clock,
+    sw, timeSw, clock_mode && reset_mode, selectdigit , led0, led1_clk,// selected_clock,
      a_clock,b_clock,c_clock,d_clock);
      
     top_stopwatch_module STOP_Mode(clk_100MHz,led0, stop_mode_pause, reset_db,
     stop_mode_digit, a_stop,b_stop,c_stop,d_stop, led_pause, led_hhmmss
     );
     
+    top_countdown_module Count_Mode(
+        .clk_100MHz(clk_100MHz),
+        .clk_1Hz(led0),
+        .reset_db(reset_db | (mode_selected != COUNTDOWN)),
+        .dec_db(dec_db),
+        .inc_db(inc_db),
+        .mode(setting_db && (mode_selected == COUNTDOWN) && reset_mode),
+        .selectdigit(selectdigit),
+        .am(a_count),.bm(b_count),.as(c_count),.bs(d_count),
+        .led_set(led1_count),
+        .curr_state(count_state),
+        .alarm(countdown_alarm)
+    );
+//    assign led1 = led1_clk | led1_count;   
     assign sysmode = mode_selected;
     always@(posedge clk_100MHz) begin
     // set all tog mode 0 when swV16 == 1
@@ -118,11 +136,12 @@ module top_module(
         mins_ones <= d_stop;
     end
     2'b11: begin // COunt down
-        vis_selected<=4'b1111;
-        hrs_tens <= 4'b1001;
-        hrs_ones <= 4'b0000;
-        mins_tens <= 4'b0000;
-        mins_ones <= 4'b1001;
+        if (countdown_alarm) vis_selected<=4'b0000;
+        else vis_selected<=selectdigit;
+        hrs_tens <= a_count;
+        hrs_ones <= b_count;
+        mins_tens <= c_count;
+        mins_ones <= d_count;
     end
     endcase
     end

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri Nov 24 11:00:50 2023
+| Date         : Sun Nov 26 19:46:35 2023
 | Host         : ROG running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_module_methodology_drc_routed.rpt -pb top_module_methodology_drc_routed.pb -rpx top_module_methodology_drc_routed.rpx
 | Design       : top_module
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 54
+             Violations found: 53
 +-----------+------------------+--------------------------------+------------+
 | Rule      | Severity         | Description                    | Violations |
 +-----------+------------------+--------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell    | 12         |
-| TIMING-18 | Warning          | Missing input or output delay  | 30         |
+| TIMING-18 | Warning          | Missing input or output delay  | 29         |
 | TIMING-20 | Warning          | Non-clocked latch              | 11         |
 | LATCH-1   | Advisory         | Existing latches in the design | 1          |
 +-----------+------------------+--------------------------------+------------+
@@ -222,25 +222,20 @@ Related violations: <none>
 
 TIMING-18#26 Warning
 Missing input or output delay  
-An output delay is missing on led1 relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led_hhmmss relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#27 Warning
 Missing input or output delay  
-An output delay is missing on led_hhmmss relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on led_pause relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#28 Warning
 Missing input or output delay  
-An output delay is missing on led_pause relative to the rising and/or falling clock edge(s) of sys_clk_pin.
-Related violations: <none>
-
-TIMING-18#29 Warning
-Missing input or output delay  
 An output delay is missing on sysmode[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
-TIMING-18#30 Warning
+TIMING-18#29 Warning
 Missing input or output delay  
 An output delay is missing on sysmode[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
@@ -257,12 +252,12 @@ Related violations: <none>
 
 TIMING-20#3 Warning
 Non-clocked latch  
-The latch editdigit/Selected_reg[1] cannot be properly analyzed as its control pin editdigit/Selected_reg[1]/G is not reached by a timing clock
+The latch editdigit/Selected_reg[0] cannot be properly analyzed as its control pin editdigit/Selected_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#4 Warning
 Non-clocked latch  
-The latch editdigit/Selected_reg[3] cannot be properly analyzed as its control pin editdigit/Selected_reg[3]/G is not reached by a timing clock
+The latch editdigit/Selected_reg[2] cannot be properly analyzed as its control pin editdigit/Selected_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#5 Warning

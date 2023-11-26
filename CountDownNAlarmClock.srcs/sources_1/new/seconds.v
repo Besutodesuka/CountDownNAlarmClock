@@ -25,7 +25,6 @@ module seconds(
     input reset,
     input [1:0] increase, // 0 => dec, 1 => inc
     output inc_minutes,
-//    output dec_minutes,
     output reg [5:0] sec_ctr  // To minutes
     );
     
@@ -38,11 +37,10 @@ module seconds(
         // 01 = incremnt
         // 00 = decrement
         // 1X = hold
-            if(sec_ctr >= 59) 
-                sec_ctr <= 0;
+            if(sec_ctr >= 59) sec_ctr <= 0;
             else if(increase == 2'b01)
                 sec_ctr <= sec_ctr + 1;
-            else if (increase == 2'b00)sec_ctr <= sec_ctr - 1;
+            else if (increase == 2'b00) sec_ctr <= sec_ctr - 1;
             else sec_ctr <= sec_ctr;
     end
     
